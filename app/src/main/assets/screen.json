@@ -1,0 +1,39 @@
+{
+  "screen": [
+    {
+      "photo": "screen4",
+      "title_en": "Social Network",
+      "title_ar": "تواصل اجتماعي",
+      "description_en": "",
+      "description_ar": ""
+    },
+    {
+      "photo": "screen4",
+      "title_en": "Book Appointments",
+      "title_ar": "إمكانية الحجز",
+      "description_en": "",
+      "description_ar": ""
+    },
+    {
+      "photo": "screen3",
+      "title_en": "Promotions & Discounts",
+      "title_ar": "عروض وخصومات",
+      "description_en": "",
+      "description_ar": ""
+    },
+    {
+      "photo": "screen2",
+      "title_en": "Beauty Centers",
+      "title_ar": "مراكز تجميل",
+      "description_en": "",
+      "description_ar": ""
+    },
+    {
+      "photo": "screen1",
+      "title_en": "Welcome",
+      "title_ar": "أهلا بك",
+      "description_en": "",
+      "description_ar": ""
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+
+
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_dialog"
+
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_currency_icon" />
+
+                    <EditText
+                        android:id="@+id/name"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edit_text"
+                        android:hint="@string/promotion1_name" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#ebebebff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="15dp"
+
+                        android:layout_height="15dp"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/calendar_icon" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/from"
+                            style="@style/TextViewStyle3"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/edit_text"
+                            android:text="@string/starttime"
+                            android:textDirection="rtl" />
+
+                        <TextView
+                            android:id="@+id/to"
+                            style="@style/TextViewStyle3"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/edit_text"
+                            android:text="@string/enddate"
+                            android:textDirection="rtl" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#ebebebff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/discount_icon" />
+
+                    <TextView
+                        android:id="@+id/discount"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/discount" />
+
+                    <EditText
+                        android:id="@+id/discount_val"
+                        android:layout_width="40dp"
+                        android:layout_height="45dp"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="@string/hint_password"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColor="#646464"
+                        android:textColorHint="#969696"
+                        android:textSize="12dp" />
+
+                    <LinearLayout
+                        android:id="@+id/typed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/type"
+                            style="@style/TextViewStyle3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/typediscount" />
+
+                        <TextView
+                            android:id="@+id/type_val"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="18dp"
+                            android:background="@drawable/edit_text"
+                            android:gravity="center"
+                            android:hint="%"
+                            android:textColor="#646464"
+                            android:textColorHint="#969696"
+                            android:textSize="15dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#ebebebff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="15dp"
+
+                        android:layout_height="15dp"
+                        android:src="@drawable/prices_icon" />
+
+                    <TextView
+                        android:id="@+id/price"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/prices" />
+
+                    <TextView
+                        android:id="@+id/before"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/before" />
+
+                    <EditText
+                        android:id="@+id/priceval"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="@string/hint_password"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#ebebebff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="15dp"
+
+                        android:layout_height="15dp"
+                        android:src="@drawable/currency_type_icon" />
+
+                    <TextView
+                        android:id="@+id/currency"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/Currencytype" />
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="15dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#ebebebff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/work_hours_icon" />
+
+                    <TextView
+                        android:id="@+id/duration"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/duration" />
+
+
+                    <EditText
+                        android:id="@+id/duration_val"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="@string/hint_password"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/unite"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/edit_text"
+                        android:gravity="center|right"
+                        android:paddingLeft="10dp"
+                        android:text="@string/min" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#ebebebff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/customers_number_icon" />
+
+                    <TextView
+                        android:id="@+id/costomer_dur"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/costoumer_duration" />
+
+
+                    <EditText
+                        android:id="@+id/customer_dur_val"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="@string/hint_password"
+                        android:inputType="number"
+                        android:paddingLeft="10dp"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#ebebebff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/uploadimage" />
+
+                    <TextView
+                        android:id="@+id/pike"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/uploadimage" />
+
+                    <LinearLayout
+                        android:id="@+id/imageseded"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp">
+
+                            <ImageView
+                                android:id="@+id/image"
+                                android:layout_width="100dp"
+                                android:layout_height="50dp" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/update"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_weight="1.7"
+
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/edit"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/reload" />
+
+                            <ImageView
+                                android:id="@+id/delete"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+
+                                android:layout_margin="10dp"
+                                android:src="@drawable/delete_button" />
+
+                        </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/progress"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#ebebebff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/description_icon" />
+
+                    <EditText
+                        android:id="@+id/description"
+                        style="@style/TextViewStyle3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edit_text"
+                        android:gravity="top"
+                        android:hint="صف العرض"
+                        android:padding="5dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#ebebebff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:paddingBottom="10dp">
+
+                    <Button
+                        android:id="@+id/cancel"
+                        android:layout_width="100dp"
+                        android:layout_height="33dp"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/button_colored"
+                        android:text="@string/cancel"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/add"
+                        android:layout_width="100dp"
+                        android:layout_height="33dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/button_colored"
+                        android:text="@string/add1"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </ScrollView>
+</LinearLayout>

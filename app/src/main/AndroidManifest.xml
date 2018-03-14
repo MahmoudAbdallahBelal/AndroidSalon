@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="salon.octadevtn.sa.salon">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name=".Utils.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <activity
+            android:name=".Login_signup.UpadatePassword"
+            android:theme="@style/AppTheme.NoActionBar2"
+            android:windowSoftInputMode="adjustPan" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".SplachScreen"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar2"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".HomeActivityDrawer"
+            android:label="@string/title_activity_home_drawer"
+            android:theme="@style/AppTheme.NoActionBar2"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".UserProfile"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity
+            android:name=".fragment.FirstListeFlow"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.NoActionBar2"
+            />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login_signup.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar2"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity
+            android:name=".Login_signup.Sign_up"
+            android:label="@string/title_activity_sign_up"
+            android:theme="@style/AppTheme.NoActionBar2"></activity>
+        <activity
+            android:name=".Login_signup.ForgetPassword"
+            android:theme="@style/AppTheme.NoActionBar2"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Contact_US"
+            android:windowSoftInputMode="adjustPan" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <service
+            android:name=".Utils.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Utils.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ddc564025d430dd926889a179e475e1e092ddc07" />
+        <activity
+            android:name=".Login_signup.ConditionPolicy"
+            android:theme="@style/MyTheme"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".Login_signup.PrivacyPolicy"
+            android:theme="@style/MyTheme"
+            android:windowSoftInputMode="adjustPan"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,62 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_weight="0.7"
+    android:orientation="vertical"
+    android:visibility="visible"
+    app:cardCornerRadius="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/why" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg"
+                android:gravity="top"
+                android:minHeight="120dp"
+                android:padding="10dp" />
+
+            <LinearLayout
+                android:id="@+id/face"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg1"
+                android:minHeight="120dp"
+                android:orientation="horizontal"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+        <salon.octadevtn.sa.salon.Utils.Circlebutton.CircularProgressButton
+            android:id="@+id/send_reason"
+            android:layout_width="90dp"
+            android:layout_height="37dp"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"
+            android:text="@string/send"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconError="@drawable/error"
+            app:cpb_textIdle="@string/send" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
