@@ -17,6 +17,7 @@
     <string name="log_in_facebook">تسجيل الدخول عبر فيس بوك</string>
     <string name="log_in_twitter">تسجيل الدخول عبر تويتر</string>
     <string name="hint_password"><h1>...</h1></string>
+
     <string name="name_user">الإسم الكريم</string>
     <string name="login_user">إسم المستخدم</string>
     <string name="genre_user">الجنس</string>
@@ -169,7 +170,7 @@
     <string name="prompt_request_camara">open location7</string>
     <string name="prompt_we_need_camera">open location</string>
     <string name="Reservation">حجز</string>
-    <string name="delele">حذف</string>
+    <string name="delele">الغاء</string>
     <string name="listebloc">قائمة الحظر فارغة</string>
 
     <string name="Location">المكان</string>
