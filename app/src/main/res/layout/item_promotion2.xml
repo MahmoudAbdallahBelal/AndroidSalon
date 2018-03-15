@@ -137,6 +137,8 @@
             android:layout_marginLeft="10dp"
             android:gravity="center">
 
+
+
             <ImageView
                 android:id="@+id/imagelike"
                 android:layout_width="18dp"
