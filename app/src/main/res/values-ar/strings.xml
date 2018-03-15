@@ -50,7 +50,7 @@
     <string name="Cancel">إلغاء</string>
     <string name="OK">موافق</string>
     <string name="Arabic">عربي</string>
-    <string name="English">إنكليزي</string>
+    <string name="English">إنجليزي</string>
     <string name="Male">ذكور</string>
     <string name="Female">إناث</string>
     <string name="hiden">ذكور، إناث</string>
@@ -152,7 +152,7 @@
     <string name="addservice">إضافة خدمة جديدة</string>
     <string name="service_name">إسم الخدمة</string>
     <string name="category_type">نوع التصنيف</string>
-    <string name="addpromotion">أضاف عرض جديد</string>
+    <string name="addpromotion">إضافة عرض جديد</string>
     <string name="promotion1_name">اسم العرض</string>
     <string name="discount">خصم :</string>
     <string name="typediscount">النوع :</string>
