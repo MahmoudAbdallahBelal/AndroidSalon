@@ -15,6 +15,7 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.github.hynra.gsonsharedpreferences.GSONSharedPreferences;
@@ -624,6 +625,7 @@ public class UserActionAaptor extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             @Override
             public void onFailure(Object result) {
+                Toast.makeText(context, ""+result.toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override

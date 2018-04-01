@@ -144,6 +144,7 @@
     <string name="branche_t">Add Other Branches</string>
     <string name="Closed">Closed</string>
     <string name="title_activity_maps">Map</string>
+    <string name="write_reason">Please Write Reason</string>
 
 
     <string name="unfollow">Unfollow</string>
@@ -157,7 +158,7 @@
     <string name="workhours">Work hours</string>
     <string name="payement">Payment\nMethodes</string>
     <string name="rating">Rating</string>
-    <string name="branche">Branche</string>
+    <string name="branche">Branch</string>
     <string name="following">Following</string>
     <string name="followers">Followers</string>
     <string name="categories">Categories</string>
@@ -196,7 +197,7 @@
     <string name="prompt_request_camara">open location7</string>
     <string name="prompt_we_need_camera">open location</string>
     <string name="Reservation">Reservation</string>
-    <string name="delele">delele</string>
+    <string name="delele">cancel</string>
     <string name="Location">Location</string>
     <string name="Bio">Bio</string>
     <string name="From">From</string>

@@ -84,6 +84,7 @@
     <string name="date">الموعد</string>
     <string name="time">الوقت</string>
     <string name="start_follow">تابع</string>
+
     <string name="skip">تجاوز</string>
     <string name="loading">تحميل...</string>
     <string name="back">رجوع</string>
@@ -138,13 +139,13 @@
     <string name="workhours">ساعات العمل</string>
     <string name="payement">طرق الدفع</string>
     <string name="rating">التقييم</string>
-    <string name="branche">الفروع</string>
+    <string name="branche">فرع</string>
     <string name="following">المُتابَعون</string>
     <string name="followers">المتابِعون</string>
     <string name="categories">التصنيفات</string>
     <string name="services">الخدمات</string>
     <string name="contains">تحتوى على </string>
-    <string name="add">قام بإضافة</string>
+    <string name="add">تمت إضافة</string>
     <string name="cancel">إلغاء</string>
     <string name="category_name">اسم التصنيف</string>
     <string name="uploadimage">رفع الصورة</string>
@@ -264,5 +265,8 @@
 
 
     <string name="client_name">اسم العميل </string>
+
+
+    <string name="write_reason">من فضلك اكتب السبب</string>
 
 </resources>

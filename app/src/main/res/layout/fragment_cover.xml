@@ -145,8 +145,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:gravity="right"
-                        android:visibility="gone">
+                        android:gravity="center"
+                        android:visibility="visible">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -154,6 +154,7 @@
                             android:src="@drawable/calendar" />
 
                         <TextView
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

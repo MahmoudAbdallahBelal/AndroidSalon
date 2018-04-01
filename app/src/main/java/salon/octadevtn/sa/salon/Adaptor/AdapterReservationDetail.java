@@ -85,6 +85,9 @@ public class AdapterReservationDetail extends RecyclerView.Adapter<AdapterReserv
         NewViewHolder userViewHolder = new NewViewHolder(v);
 
 
+
+
+
         return userViewHolder;
     }
 
@@ -105,6 +108,17 @@ public class AdapterReservationDetail extends RecyclerView.Adapter<AdapterReserv
             }
         });
 
+
+
+        if (Integer.parseInt(mDataSet.get(position).getEtat()) == -1)
+        {
+            holder.menu1.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            holder.menu1.setVisibility(View.VISIBLE);
+
+        }
 
         holder.menu1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +156,7 @@ public class AdapterReservationDetail extends RecyclerView.Adapter<AdapterReserv
                                 @Override
                                 public void onClick(View v) {
                                     ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setIndeterminateProgressMode(true); // turn on indeterminate progress
-                                    ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setProgress(50);
+                                   ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setProgress(50);
                                     // holder.face.setVisibility(View.VISIBLE);
                                     CancelReservation(mDataSet.get(position).getId() + "", ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().toString(), "salon", position, holder, dialog);
 
@@ -159,6 +173,7 @@ public class AdapterReservationDetail extends RecyclerView.Adapter<AdapterReserv
                 }
             }
         });
+
         //   holder.description.setText("");
 
         Calendar calendar = Calendar.getInstance();

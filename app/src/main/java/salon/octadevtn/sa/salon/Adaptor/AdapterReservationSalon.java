@@ -36,6 +36,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
 import salon.octadevtn.sa.salon.Api.Reservation.AcceptReservation;
 import salon.octadevtn.sa.salon.Api.Reservation.CancelReservation;
 import salon.octadevtn.sa.salon.Api.Reservation.GetReservation;
@@ -123,15 +124,20 @@ public class AdapterReservationSalon extends RecyclerView.Adapter<AdapterReserva
             //reservation Approve view detail
             holder.end.setVisibility(View.GONE);
 
+
+
         }
         if (Integer.parseInt(mDataSet.get(position).getEtat()) == -1) {
             holder.buton1.setVisibility(View.GONE);
+
 
         }
         if (Integer.parseInt(mDataSet.get(position).getEtat()) == 0) {
             //reservation Approve view detail
             holder.buton.setVisibility(View.VISIBLE);
             holder.buton1.setVisibility(View.VISIBLE);
+            holder.menu.setVisibility(View.GONE);
+
 
         }
 
@@ -147,8 +153,18 @@ public class AdapterReservationSalon extends RecyclerView.Adapter<AdapterReserva
                 holder.send_reason.setIndeterminateProgressMode(true); // turn on indeterminate progress
                 holder.send_reason.setProgress(50);
                 holder.face.setVisibility(View.VISIBLE);
-                CancelReservation(mDataSet.get(position).getId() + "", holder.reason.getText().toString(), "salon", position, holder, null);
+                if( (holder.reason.getText().length() == 0)){
 
+                    holder.send_reason.setIndeterminateProgressMode(false); // turn on indeterminate progress
+                    holder.send_reason.setProgress(0);
+                    holder.face.setVisibility(View.GONE);
+
+                    Toast.makeText(mcontext, ""+mcontext.getString(R.string.write_reason), Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else {
+                    CancelReservation(mDataSet.get(position).getId() + "", holder.reason.getText().toString(), "salon", position, holder, null);
+                }
 
             }
         });
@@ -166,10 +182,12 @@ public class AdapterReservationSalon extends RecyclerView.Adapter<AdapterReserva
         holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(mDataSet.get(position).getEtat()) == 0 || Integer.parseInt(mDataSet.get(position).getEtat()) == 1) {
+
+                if (/*Integer.parseInt(mDataSet.get(position).getEtat()) == 0
+                        || */Integer.parseInt(mDataSet.get(position).getEtat()) == 1) {
                     LayoutInflater layoutInflater
                             = (LayoutInflater) MyApplication.getAppContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-                    popupView = layoutInflater.inflate(R.layout.pop_up_reservation, null);
+                   popupView = layoutInflater.inflate(R.layout.pop_up_reservation, null);
 
                     if (popupWindow == null)
                         popupWindow = new PopupWindow(
@@ -201,55 +219,16 @@ public class AdapterReservationSalon extends RecyclerView.Adapter<AdapterReserva
                                     ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setIndeterminateProgressMode(true); // turn on indeterminate progress
                                     ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setProgress(50);
                                     holder.face.setVisibility(View.VISIBLE);
-                                    CancelReservation(mDataSet.get(position).getId() + "", ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().toString(), "salon", position, holder, dialog);
 
-                                }
-                            });
+                                    if(((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().length() == 0) {
+                                        ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setIndeterminateProgressMode(false); // turn on indeterminate progress
+                                        ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setProgress(0);
+                                        holder.face.setVisibility(View.GONE);
 
-                        }
-                    });
-                    if (popupWindow.isShowing()) {
-                        popupWindow.dismiss();
-                    }
-
-                    popupWindow.showAsDropDown(holder.menu, -60, -60);
-                } else if (Integer.parseInt(mDataSet.get(position).getEtat()) == 0 || Integer.parseInt(mDataSet.get(position).getEtat()) == 1) {
-                    LayoutInflater layoutInflater
-                            = (LayoutInflater) MyApplication.getAppContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-                    popupView = layoutInflater.inflate(R.layout.pop_up_reservation, null);
-
-                    if (popupWindow == null)
-                        popupWindow = new PopupWindow(
-                                popupView,
-                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT);
-
-                    LinearLayout btnDismiss = (LinearLayout) popupView.findViewById(R.id.cancel);
-                    btnDismiss.setOnClickListener(new Button.OnClickListener() {
-
-                        @Override
-                        public void onClick(View v) {
-                            final Dialog dialog = new Dialog(mcontext);
-                            dialog.setContentView(R.layout.dialog_cancel_reservation);
-                            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-                            lp.copyFrom(dialog.getWindow().getAttributes());
-                            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-                            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                            dialog.getWindow().setAttributes(lp);
-                            ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).setTypeface(MyApplication.type_jf_regular);
-                            ((TextView) dialog.findViewById(R.id.title)).setTypeface(MyApplication.type_jf_regular);
-                            ((Button) dialog.findViewById(R.id.send_reason)).setTypeface(MyApplication.type_jf_regular);
-
-                            dialog.show();
-                            dialog.findViewById(R.id.send_reason).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setIndeterminateProgressMode(true); // turn on indeterminate progress
-                                    ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setProgress(50);
-                                    holder.face.setVisibility(View.VISIBLE);
-                                    CancelReservation(mDataSet.get(position).getId() + "", ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().toString(), "salon", position, holder, dialog);
-
+                                        Toast.makeText(mcontext, ""+mcontext.getString(R.string.write_reason), Toast.LENGTH_LONG).show();
+                                    }
+                                    else {    CancelReservation(mDataSet.get(position).getId() + "", ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().toString(), "salon", position, holder, dialog);
+                                    }
                                 }
                             });
 
@@ -261,6 +240,70 @@ public class AdapterReservationSalon extends RecyclerView.Adapter<AdapterReserva
 
                     popupWindow.showAsDropDown(holder.menu, -60, -60);
                 }
+
+
+                else if (/*Integer.parseInt(mDataSet.get(position).getEtat()) == 0
+                        || */ Integer.parseInt(mDataSet.get(position).getEtat()) == 1)
+                {
+                    LayoutInflater layoutInflater
+                            = (LayoutInflater) MyApplication.getAppContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                    popupView = layoutInflater.inflate(R.layout.pop_up_reservation, null);
+
+                    if (popupWindow == null)
+                        popupWindow = new PopupWindow(
+                                popupView,
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                    LinearLayout btnDismiss = (LinearLayout) popupView.findViewById(R.id.cancel);
+                    btnDismiss.setOnClickListener(new Button.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            final Dialog dialog = new Dialog(mcontext);
+                            dialog.setContentView(R.layout.dialog_cancel_reservation);
+                            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+                            lp.copyFrom(dialog.getWindow().getAttributes());
+                            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+                            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                            dialog.getWindow().setAttributes(lp);
+                            ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).setTypeface(MyApplication.type_jf_regular);
+                            ((TextView) dialog.findViewById(R.id.title)).setTypeface(MyApplication.type_jf_regular);
+                            ((Button) dialog.findViewById(R.id.send_reason)).setTypeface(MyApplication.type_jf_regular);
+
+                            dialog.show();
+                            dialog.findViewById(R.id.send_reason).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setIndeterminateProgressMode(true); // turn on indeterminate progress
+                                    ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setProgress(50);
+                                    holder.face.setVisibility(View.VISIBLE);
+                                    if( ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().length() == 0){
+
+
+                                        ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setIndeterminateProgressMode(false); // turn on indeterminate progress
+                                        ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setProgress(0);
+                                        holder.face.setVisibility(View.GONE);
+
+                                        Toast.makeText(mcontext, ""+mcontext.getString(R.string.write_reason), Toast.LENGTH_LONG).show();
+                                            return;
+                                    }
+                                    else {
+                                        CancelReservation(mDataSet.get(position).getId() + "", ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().toString(), "salon", position, holder, dialog);
+                                    }
+                                }
+                            });
+
+                        }
+                    });
+                    if (popupWindow.isShowing()) {
+                        popupWindow.dismiss();
+                    }
+
+                    popupWindow.showAsDropDown(holder.menu, -60, -60);
+                }
+
             }
         });
         //   holder.description.setText("");
@@ -653,7 +696,8 @@ public class AdapterReservationSalon extends RecyclerView.Adapter<AdapterReserva
                     public void onFailure(Object result) {
                         ResponseErrors responseError = (ResponseErrors) result;
                         String Error = "Failure";
-                        Toast.makeText(mcontext, Error, Toast.LENGTH_SHORT).show();
+
+                       // Toast.makeText(mcontext, Error, Toast.LENGTH_SHORT).show();
 
                     }
 
