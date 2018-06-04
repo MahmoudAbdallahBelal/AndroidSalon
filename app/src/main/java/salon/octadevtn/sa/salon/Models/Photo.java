@@ -8,11 +8,17 @@ public class Photo {
     String url, type;
     int id;
 
+    public Photo(String url) {
+        this.url = url;
+    }
+
     public Photo(String url, String type, Integer id) {
         this.url = url;
         this.type = type;
         this.id = id;
     }
+
+
 
     public String getUrl() {
         return url;

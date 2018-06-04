@@ -666,7 +666,7 @@ public class HomeActivityDrawer extends BackStackActivity {
     public void setFragment(Fragment fragment) {
         showFragment(fragment, true);
         if (curFragment != null && true ) {
-            pushFragmentToBackStack(curTabId, curFragment);
+           pushFragmentToBackStack(curTabId, curFragment);
         }
         replaceFragment(fragment);
 

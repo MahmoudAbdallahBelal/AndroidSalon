@@ -49,6 +49,7 @@ import salon.octadevtn.sa.salon.Utils.MyApplication;
 import salon.octadevtn.sa.salon.Utils.UniversalCallBack;
 import salon.octadevtn.sa.salon.Utils.UrlStatic;
 import salon.octadevtn.sa.salon.fragment.ListeCover;
+import salon.octadevtn.sa.salon.fragment.NotifFragmentment;
 import salon.octadevtn.sa.salon.fragment.PromotionFragment;
 import salon.octadevtn.sa.salon.fragment.SalonProfile;
 import salon.octadevtn.sa.salon.fragment.Salon_services;
@@ -73,6 +74,8 @@ public class NotifAaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.moviesList = moviesList;
         this.context = context;
         this.recyclerView = recyclerView;
+
+
     }
 
     public static String theMonth(int month) {
@@ -97,7 +100,10 @@ public class NotifAaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         } else {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_flowed, parent, false);
+
+
             return new FOLLOW(itemView);
+
         }
     }
 
@@ -112,6 +118,13 @@ public class NotifAaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         });
 
+
+
+
+        //-------
+
+
+        //--------
         if (holder instanceof MyViewHolderpromotion) {
             ((MyViewHolderpromotion) holder).menu.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -1601,6 +1614,56 @@ public class NotifAaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
         if (holder instanceof FOLLOW) {
             if (moviesList.get(position).getType().equals("following")) {
+
+                ((FOLLOW) holder). menu.setVisibility(View.VISIBLE);
+                ((FOLLOW) holder). menu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (popupWindow != null)
+                            if (popupWindow.isShowing())
+                                popupWindow.dismiss();
+                        LayoutInflater layoutInflater
+                                = (LayoutInflater) MyApplication.getAppContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                        View popupView = layoutInflater.inflate(R.layout.pop_up, null);
+                        popupWindow = new PopupWindow(
+                                popupView,
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                        ((TextView) popupView.findViewById(R.id.del)).setTypeface(MyApplication.type_jf_regular);
+                        ((TextView) popupView.findViewById(R.id.hid)).setTypeface(MyApplication.type_jf_regular);
+                        ((TextView) popupView.findViewById(R.id.edi)).setTypeface(MyApplication.type_jf_regular);
+
+                        LinearLayout delete = (LinearLayout) popupView.findViewById(R.id.delete);
+                        LinearLayout hide = (LinearLayout) popupView.findViewById(R.id.hide);
+                        delete.setOnClickListener(new Button.OnClickListener() {
+
+                            @Override
+                            public void onClick(View v) {
+                                DeleteActivity(moviesList.get(position).getId(), position);
+                                popupWindow.dismiss();
+                            }
+                        });
+                        hide.setOnClickListener(new Button.OnClickListener() {
+
+                            @Override
+                            public void onClick(View v) {
+                                moviesList.remove(position);
+                                notifyItemRemoved(position);
+                                notifyItemRangeChanged(position, moviesList.size());
+
+                                popupWindow.dismiss();
+                            }
+                        });
+
+
+                        popupWindow.showAsDropDown(((MyViewHolderpromotion) holder).menu, -60, -60);
+
+                    }
+                });
+
+
+
                 final String name = " " + moviesList.get(position).getUser().getUsername() + " ";
                 //final String of = moviesList.get(position).getFlow().getUsername();
                 String comment = "";
@@ -2493,6 +2556,7 @@ public class NotifAaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             text = (TextView) view.findViewById(R.id.text);
             time = (TextView) view.findViewById(R.id.time);
             menu = (ImageView) view.findViewById(R.id.menu);
+
         }
     }
 

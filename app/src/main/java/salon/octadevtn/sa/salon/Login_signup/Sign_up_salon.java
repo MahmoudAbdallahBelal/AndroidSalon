@@ -183,6 +183,7 @@ public class Sign_up_salon extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_sign_up_salon, container, false);
+
         ButterKnife.setDebug(true);
         ButterKnife.bind(this, view);
         salonTypesListe = new ArrayList<>();
@@ -627,16 +628,16 @@ public class Sign_up_salon extends Fragment {
     }
 
     public void ListeCountry() {
-        final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.color2));
-        pDialog.setTitleText(getResources().getString(R.string.loading));
-        pDialog.setCancelable(false);
-        pDialog.show();
+//        final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+//        pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.color2));
+//        pDialog.setTitleText(getResources().getString(R.string.loading));
+//        pDialog.setCancelable(false);
+//        pDialog.show();
         new ListeCountry().ListeCountry(new UniversalCallBack() {
             @Override
             public void onResponse(Object result) throws JSONException {
                 if (result != null) {
-                    pDialog.dismiss();
+                    //pDialog.dismiss();
                     country1s.clear();
                     Country[] country = (Country[]) result;
                     List<City> cities1 = new ArrayList<City>();
@@ -646,7 +647,7 @@ public class Sign_up_salon extends Fragment {
 
                     SalonTypes();
                 } else {
-                    pDialog.dismiss();
+                   // pDialog.dismiss();
                     ListeCountry();
                 }
 
@@ -657,13 +658,13 @@ public class Sign_up_salon extends Fragment {
                 ResponseErrors responseError = (ResponseErrors) result;
                 String Error = "Failure";
 
-                pDialog.dismiss();
+               // pDialog.dismiss();
                 ListeCountry();
             }
 
             @Override
             public void OnError(String message) {
-                pDialog.dismiss();
+                //pDialog.dismiss();
                 ListeCountry();
             }
 
@@ -675,17 +676,17 @@ public class Sign_up_salon extends Fragment {
     }
 
     public void SalonTypes() {
-        final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.color2));
-        pDialog.setTitleText(getResources().getString(R.string.loading));
-        pDialog.setCancelable(false);
-        pDialog.show();
+//        final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+//        pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.color2));
+//        pDialog.setTitleText(getResources().getString(R.string.loading));
+//        pDialog.setCancelable(false);
+//        pDialog.show();
 
         new ApiSalonProfile().SalonTypes(new UniversalCallBack() {
             @Override
             public void onResponse(Object result) throws JSONException {
                 if (result != null) {
-                    pDialog.dismiss();
+                    //pDialog.dismiss();
                     SalonType = (salon.octadevtn.sa.salon.Models.SalonType[]) result;
                     for (int i = 0; i < SalonType.length; i++) {
                         salonTypesListe.add(SalonType[i]);
@@ -694,7 +695,7 @@ public class Sign_up_salon extends Fragment {
                     }
 
                 } else {
-                    pDialog.dismiss();
+                   // pDialog.dismiss();
 
                     SalonTypes();
                 }
@@ -704,7 +705,7 @@ public class Sign_up_salon extends Fragment {
             public void onFailure(Object result) {
                 ResponseErrors responseError = (ResponseErrors) result;
                 String Error = "Failure";
-                pDialog.dismiss();
+                //pDialog.dismiss();
 
                 SalonTypes();
 
@@ -712,7 +713,7 @@ public class Sign_up_salon extends Fragment {
 
             @Override
             public void OnError(String message) {
-                pDialog.dismiss();
+               // pDialog.dismiss();
 
                 SalonTypes();
             }

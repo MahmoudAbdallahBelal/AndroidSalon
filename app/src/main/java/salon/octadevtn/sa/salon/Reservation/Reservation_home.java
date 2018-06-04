@@ -32,6 +32,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.github.hynra.gsonsharedpreferences.GSONSharedPreferences;
 import com.github.hynra.gsonsharedpreferences.ParsingException;
 import com.labo.kaji.fragmentanimations.MoveAnimation;
+import com.valdesekamdem.library.mdtoast.MDToast;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.text.ParseException;
@@ -48,6 +49,7 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import es.dmoral.toasty.Toasty;
 import salon.octadevtn.sa.salon.Api.ApiSalonProfile;
 import salon.octadevtn.sa.salon.Api.Promotion;
 import salon.octadevtn.sa.salon.Api.Reservation.AddReservation;
@@ -211,10 +213,12 @@ public class Reservation_home extends Fragment implements TimePickerDialog.OnTim
 
          //user_name.setText("");
 
+        /*
          pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.color2));
         pDialog.setTitleText(getResources().getString(R.string.loading));
         pDialog.setCancelable(false);
+        */
         api(mParam1);
 
         time.setOnClickListener(new View.OnClickListener() {
@@ -404,41 +408,55 @@ public class Reservation_home extends Fragment implements TimePickerDialog.OnTim
 
     public void AddReservation() {
         if (selecteddate && setedtime) {
-            pDialog.show();
+            //>>pDialog.show();
             new AddReservation().AddReservation(user.getId() + "", salon.getSalon().getId() + "", mParam1, date.getText().toString(), dateseted, timeseted,
                     new UniversalCallBack() {
                         @Override
                         public void onResponse(Object result) {
                             if (result != null) {
-                                pDialog.dismiss();
-                                new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
-                                        .setTitleText(getResources().getString(R.string.new_res))
-                                        .setConfirmText(getResources().getString(R.string.ok))
-                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                            @Override
-                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                                sweetAlertDialog.dismissWithAnimation();
+                             //   pDialog.dismiss();
 
-                                                getActivity().onBackPressed();
-                                            }
-                                        })
-                                        .setContentText(getResources().getString(R.string.youmakenewres))
-                                        .show();
 
-                                getActivity().getSupportFragmentManager().popBackStack();
+                                MDToast mdToast;
+                                mdToast = MDToast.makeText(getActivity(),getString(R.string.youmakenewres) , 8,MDToast.TYPE_SUCCESS );
+                                mdToast.show();
+
+                                getActivity().onBackPressed();
+
+//                                new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+//                                        .setTitleText(getContext().getString(R.string.new_res))
+//                                        .setConfirmText(getContext().getString(R.string.ok))
+//                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                                            @Override
+//                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+//                                                sweetAlertDialog.dismissWithAnimation();
+//
+//                                                getActivity().onBackPressed();
+//                                            }
+//                                        })
+//                                        .setContentText(getContext().getString(R.string.youmakenewres))
+//                                        .show();
+//
+//                                getActivity().getSupportFragmentManager().popBackStack();
+
+
+
                             } else {
-                                pDialog.dismiss();
-                                new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                                        .setTitleText(getResources().getString(R.string.erreurreservation))
-                                        .setContentText(getResources().getString(R.string.tryagain))
-                                        .setConfirmText(getResources().getString(R.string.ok))
-                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                            @Override
-                                            public void onClick(SweetAlertDialog sDialog) {
-                                                sDialog.dismissWithAnimation();
-                                            }
-                                        })
-                                        .show();
+                                //pDialog.dismiss();
+//                                new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+//                                        .setTitleText(getResources().getString(R.string.erreurreservation))
+//                                        .setContentText(getResources().getString(R.string.tryagain))
+//                                        .setConfirmText(getResources().getString(R.string.ok))
+//                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                                            @Override
+//                                            public void onClick(SweetAlertDialog sDialog) {
+//                                                sDialog.dismissWithAnimation();
+//                                            }
+//                                        })
+//                                        .show();
+                                MDToast mdToast;
+                                mdToast = MDToast.makeText(getActivity(),getString(R.string.erreurreservation) , 8,MDToast.TYPE_ERROR );
+                                mdToast.show();
 
                             }
                         }
@@ -447,23 +465,26 @@ public class Reservation_home extends Fragment implements TimePickerDialog.OnTim
                         public void onFailure(Object result) {
                             ResponseErrors responseError = (ResponseErrors) result;
                             String Error = "Failure";
-                            pDialog.dismiss();
-                            new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                                    .setTitleText(getResources().getString(R.string.erreurreservation))
-                                    .setContentText(getResources().getString(R.string.tryagain))
-                                    .setConfirmText(getResources().getString(R.string.ok))
-                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                        @Override
-                                        public void onClick(SweetAlertDialog sDialog) {
-                                            sDialog.dismissWithAnimation();
-                                        }
-                                    })
-                                    .show();
+                            //pDialog.dismiss();
+//                            new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+//                                    .setTitleText(getResources().getString(R.string.erreurreservation))
+//                                    .setContentText(getResources().getString(R.string.tryagain))
+//                                    .setConfirmText(getResources().getString(R.string.ok))
+//                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                                        @Override
+//                                        public void onClick(SweetAlertDialog sDialog) {
+//                                            sDialog.dismissWithAnimation();
+//                                        }
+//                                    })
+//                                    .show();
+                            MDToast mdToast;
+                            mdToast = MDToast.makeText(getActivity(),getString(R.string.erreurreservation) , 8,MDToast.TYPE_ERROR );
+                            mdToast.show();
                         }
 
                         @Override
                         public void OnError(String message) {
-                            pDialog.dismiss();
+                           // pDialog.dismiss();
                             new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                                     .setTitleText(getResources().getString(R.string.erreurreservation))
                                     .setContentText(getResources().getString(R.string.tryagain))
@@ -541,7 +562,7 @@ public class Reservation_home extends Fragment implements TimePickerDialog.OnTim
 
     public void api(String id) {
 
-        pDialog.show();
+        //pDialog.show();
 
 
         new Promotion().getpromotion(Integer.parseInt(id)
@@ -605,8 +626,8 @@ public class Reservation_home extends Fragment implements TimePickerDialog.OnTim
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (pDialog != null)
-            pDialog.dismiss();
+//        if (pDialog != null)
+          //  pDialog.dismiss();
     }
 
     public void api2(int id) {
@@ -616,7 +637,7 @@ public class Reservation_home extends Fragment implements TimePickerDialog.OnTim
                     public void onResponse(Object result) {
                         if (result != null && Reservation_home.this.isVisible()) {
                             salon = (salon.octadevtn.sa.salon.Models.SalonProfile) result;
-                            pDialog.dismiss();
+                          //  pDialog.dismiss();
                         } else {
                             showError();
 
@@ -646,7 +667,7 @@ public class Reservation_home extends Fragment implements TimePickerDialog.OnTim
     }
 
     public void showError() {
-        pDialog.dismiss();
+       // pDialog.dismiss();
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                 .setTitleText(getResources().getString(R.string.erreur1))
                 .setContentText(getResources().getString(R.string.tryagain))

@@ -313,7 +313,7 @@
                     android:layout_height="17dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="17dp"
-                    android:src="@drawable/mail_icon" />
+                    android:src="@drawable/email" />
 
                 <EditText
                     android:id="@+id/email_user"
@@ -369,7 +369,7 @@
                     android:layout_height="17dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="17dp"
-                    android:src="@drawable/bio_icon" />
+                    android:background="@drawable/bio_icon" />
 
                 <EditText
                     android:id="@+id/bio"

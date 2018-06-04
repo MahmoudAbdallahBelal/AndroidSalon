@@ -65,6 +65,7 @@ public class UserActionAaptor extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
     public UserActionAaptor(Context context, List<ListTimeline> moviesList, RecyclerView recyclerView) {
+
         this.moviesList = moviesList;
         this.context = context;
         this.recyclerView = recyclerView;
@@ -422,11 +423,13 @@ public class UserActionAaptor extends RecyclerView.Adapter<RecyclerView.ViewHold
             });
         }
 /*******************************************************************************************/
-        if (holder instanceof Profile) {
+        if (holder instanceof Profile ) {
 
 
+            ((Profile) holder).menu.setVisibility(View.VISIBLE);
             if (!moviesList.get(position).getUser().getIdUser().equals(profile.getUserId()))
-                ((Profile) holder).menu.setVisibility(View.GONE);
+                ((Profile) holder).menu.setVisibility(View.VISIBLE);
+            //>>
             else
                 ((Profile) holder).menu.setVisibility(View.VISIBLE);
 

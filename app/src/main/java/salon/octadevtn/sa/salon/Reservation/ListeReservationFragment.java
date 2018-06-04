@@ -26,6 +26,7 @@ import butterknife.ButterKnife;
 import salon.octadevtn.sa.salon.Adaptor.AdapterReservation;
 import salon.octadevtn.sa.salon.Models.Reservation.Reservation;
 import salon.octadevtn.sa.salon.Models.Reservation.Task;
+import salon.octadevtn.sa.salon.Models.User;
 import salon.octadevtn.sa.salon.R;
 import salon.octadevtn.sa.salon.Utils.MyApplication;
 import salon.octadevtn.sa.salon.Utils.ResponseErrors;
@@ -91,6 +92,7 @@ public class ListeReservationFragment extends Fragment {
                     @Override
                     public void onResponse(Object result) {
 
+
                         if (result != null) {
                             Reservation reservation = (Reservation) result;
                             ArrayList<Task> tasks = new ArrayList<Task>();
@@ -99,11 +101,16 @@ public class ListeReservationFragment extends Fragment {
                             recyclerView.setAdapter(adapterReservation);
                             adapterReservation.notifyDataSetChanged();
                             swipeRefreshLayout.setRefreshing(false);
+
+
                             if (reservation.getTasks().size() == 0) {
                                 nodata.setVisibility(View.VISIBLE);
-                            } else nodata.setVisibility(View.GONE);
+                            }
+                            else nodata.setVisibility(View.GONE);
+
 
                         }
+
 
                     }
 
@@ -167,11 +174,15 @@ public class ListeReservationFragment extends Fragment {
             }
 
         });
+
         swipeRefreshLayout.setColorSchemeResources(
                 R.color.color1,
                 R.color.color2,
                 R.color.color3,
                 R.color.color4);
+
+
+
 
 
         swipeRefreshLayout.post(new Runnable() {

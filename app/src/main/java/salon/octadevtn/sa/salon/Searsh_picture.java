@@ -91,6 +91,15 @@ public class Searsh_picture extends Fragment {
         recyclerView.setLayoutManager(gl);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setDrawingCacheEnabled(true);
+
+
+
+//
+        for (int i = 0; i < Searsh_request.searsh.getSalons().size(); i++) {
+            objects.add(new Photo(Searsh_request.searsh.getSalons().get(i).getPhoto()));
+        }
+
+        /*
         if (Searsh_request.searsh.getService() != null)
             try {
                 services = Searsh_request.searsh.getService();
@@ -106,6 +115,8 @@ public class Searsh_picture extends Fragment {
             for (int i = 0; i < Searsh_request.searsh.getService().size(); i++) {
                 objects.add(new Photo(Searsh_request.searsh.getService().get(i).getImageUrl(), "service", Integer.parseInt(Searsh_request.searsh.getService().get(i).getId())));
             }
+*/
+
         adaptorServiceCategory = new AdaptorService_Category1(objects, getActivity());
 
         recyclerView.setAdapter(adaptorServiceCategory);

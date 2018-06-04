@@ -118,14 +118,14 @@ public class MapsActivity extends FragmentActivity implements PlaceSelectionList
             //  dialog.show();
         } else {
             if (mMap != null) {
-                try {
-                    LatLng latLng = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
-                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 13);
-                    mMap.animateCamera(cameraUpdate);
-
-                } catch (Exception e) {
-
-                }
+//                try {
+//                    LatLng latLng = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
+//                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 13);
+//                    mMap.animateCamera(cameraUpdate);
+//
+//                } catch (Exception e) {
+//
+//                }
             }
 
         }
@@ -146,36 +146,38 @@ public class MapsActivity extends FragmentActivity implements PlaceSelectionList
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mMap.setMyLocationEnabled(true);
-        GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
-            @Override
-            public void onMyLocationChange(Location location) {
-
-                latitude = location.getLatitude();
-                longitude = location.getLongitude();
-                if (latitude != 0.0) {
-                    if (verif) {
-                        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude,
-                                longitude)).zoom(12).build();
-                        Marker marker = mMap.addMarker(new MarkerOptions()
-                                .position(new LatLng(latitude,
-                                        longitude))
-                                .icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView(R.drawable.marker)))
-                        );
-                        verif = false;
-                        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                    }
-                }
-            }
-        };
+       // mMap.setMyLocationEnabled(true);
+//        GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
+//            @Override
+//            public void onMyLocationChange(Location location) {
+//
+//                latitude = location.getLatitude();
+//                longitude = location.getLongitude();
+//                if (latitude != 0.0) {
+//                    if (verif) {
+//                        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude,
+//                                longitude)).zoom(12).build();
+////                        Marker marker = mMap.addMarker(new MarkerOptions()
+////                                .position(new LatLng(latitude,
+////                                        longitude))
+////                                .icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView(R.drawable.marker)))
+////                        );
+//                        verif = false;
+//                        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+//                    }
+//                }
+//            }
+//        };
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
                 mMap.clear();
+               /*
                 Marker marker = mMap.addMarker(new MarkerOptions()
                         .position(latLng)
                         .icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView(R.drawable.marker)))
                 );
+                */
                 CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(12).build();
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 latitude = latLng.latitude;
@@ -186,7 +188,7 @@ public class MapsActivity extends FragmentActivity implements PlaceSelectionList
         });
 
 
-        mMap.setOnMyLocationChangeListener(myLocationChangeListener);
+      //  mMap.setOnMyLocationChangeListener(myLocationChangeListener);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling

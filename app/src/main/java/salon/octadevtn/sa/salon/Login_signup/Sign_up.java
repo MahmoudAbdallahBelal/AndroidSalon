@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import salon.octadevtn.sa.salon.R;
 
@@ -48,6 +49,7 @@ public class Sign_up extends AppCompatActivity {
                 decor.setSystemUiVisibility(0);
             }
         }
+
         manager = getSupportFragmentManager();
         ((ImageView) findViewById(R.id.customer)).setImageDrawable(getResources().getDrawable(R.drawable.customer_selected));
         ((ImageView) findViewById(R.id.salon)).setImageDrawable(getResources().getDrawable(R.drawable.salon_deselected));
@@ -72,9 +74,11 @@ public class Sign_up extends AppCompatActivity {
         findViewById(R.id.salon1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ((ImageView) findViewById(R.id.customer)).setImageDrawable(getResources().getDrawable(R.drawable.customer_deselected));
                 ((ImageView) findViewById(R.id.salon)).setImageDrawable(getResources().getDrawable(R.drawable.salon_selected));
                 setFragment(new Sign_up_salon());
+
             }
         });
 

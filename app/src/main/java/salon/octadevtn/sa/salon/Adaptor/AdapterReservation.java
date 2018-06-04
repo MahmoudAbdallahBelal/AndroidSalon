@@ -157,7 +157,7 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
         holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(mDataSet.get(position).getEtat()) == 0 || Integer.parseInt(mDataSet.get(position).getEtat()) == 1) {
+                if (Integer.parseInt(mDataSet.get(position).getEtat()) == 0 || Integer.parseInt(mDataSet.get(position).getEtat()) == 1 ||Integer.parseInt(mDataSet.get(position).getEtat()) == -1) {
 
                     LayoutInflater layoutInflater
                             = (LayoutInflater) MyApplication.getAppContext().getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -202,10 +202,17 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
                             dialog.findViewById(R.id.send_reason).setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setIndeterminateProgressMode(true); // turn on indeterminate progress
-                                    ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setProgress(50);
-                                    holder.face.setVisibility(View.VISIBLE);
-                                    CancelReservation(mDataSet.get(position).getId() + "", ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().toString(), "Customer", holder, dialog, position);
+
+                                   if (((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().toString().length() ==0){
+
+                                       ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).setError(""+mcontext.getString(R.string.write_reason));
+                                       return;
+                                    } else {
+                                       ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setIndeterminateProgressMode(true); // turn on indeterminate progress
+                                       ((CircularProgressButton) dialog.findViewById(R.id.send_reason)).setProgress(50);
+                                       holder.face.setVisibility(View.VISIBLE);
+                                       CancelReservation(mDataSet.get(position).getId() + "", ((MultiAutoCompleteTextView) dialog.findViewById(R.id.reason)).getText().toString(), "Customer", holder, dialog, position);
+                                   }
 
                                 }
                             });

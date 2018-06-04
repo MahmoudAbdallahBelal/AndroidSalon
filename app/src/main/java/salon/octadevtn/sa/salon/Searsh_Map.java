@@ -1,6 +1,7 @@
 package salon.octadevtn.sa.salon;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -182,6 +183,7 @@ public class Searsh_Map extends Fragment implements OnMapReadyCallback, Location
 
         buildGoogleApiClient();
 
+        /*
         FcPermissionsB mFcPermissionsB = new FcPermissionsB.Builder(getActivity())
                 .onGrantedListener(new OnPermissionsGrantedListener() {
                     @Override
@@ -214,25 +216,26 @@ public class Searsh_Map extends Fragment implements OnMapReadyCallback, Location
                 .rationale4NeverAskAgain(getString(R.string.prompt_we_need_camera))//必需
                 .requestCode(200)//必需
                 .build();
-        mFcPermissionsB.requestPermissions(Manifest.permission.ACCESS_FINE_LOCATION);//request permissions
+                */
+       // mFcPermissionsB.requestPermissions(Manifest.permission.ACCESS_FINE_LOCATION);//request permissions
 
 
-        GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
-            @Override
-            public void onMyLocationChange(Location location) {
-
-                latitude = location.getLatitude();
-                longitude = location.getLongitude();
-                if (latitude != 0.0) {
-                    if (verif) {
-                        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude,
-                                longitude)).zoom(12).build();
-                        verif = false;
-                        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                    }
-                }
-            }
-        };
+//        GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
+//            @Override
+//            public void onMyLocationChange(Location location) {
+//
+//                latitude = location.getLatitude();
+//                longitude = location.getLongitude();
+//                if (latitude != 0.0) {
+//                    if (verif) {
+//                        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude,
+//                                longitude)).zoom(12).build();
+//                        verif = false;
+//                        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+//                    }
+//                }
+//            }
+//        };
         for (int i = 0; i < Searsh_request.searsh.getSalons().size(); i++) {
             Salon salon = Searsh_request.searsh.getSalons().get(i);
           //  if (calculedistance(salon.getLatitude(), salon.getLongutide())) {
@@ -279,7 +282,7 @@ public class Searsh_Map extends Fragment implements OnMapReadyCallback, Location
             }
         });
 
-        mMap.setOnMyLocationChangeListener(myLocationChangeListener);
+        //mMap.setOnMyLocationChangeListener(myLocationChangeListener);
 
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -292,7 +295,7 @@ public class Searsh_Map extends Fragment implements OnMapReadyCallback, Location
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mMap.setMyLocationEnabled(true);
+       // mMap.setMyLocationEnabled(true);
 
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
@@ -305,9 +308,12 @@ public class Searsh_Map extends Fragment implements OnMapReadyCallback, Location
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
 
+
+            @SuppressLint("RestrictedApi")
             ContextThemeWrapper cw = new ContextThemeWrapper(
                     MyApplication.getAppContext(), R.style.Transparent);
             // AlertDialog.Builder b = new AlertDialog.Builder(cw);
+            @SuppressLint("RestrictedApi")
             LayoutInflater inflater = (LayoutInflater) cw
                     .getSystemService(LAYOUT_INFLATER_SERVICE);
 

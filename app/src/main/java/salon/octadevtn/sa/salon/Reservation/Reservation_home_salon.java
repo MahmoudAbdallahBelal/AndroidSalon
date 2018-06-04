@@ -154,6 +154,7 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         if (getArguments() != null) {
         }
 
@@ -182,6 +183,7 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
 
         }
 
+
     }
 
     @Override
@@ -189,6 +191,8 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_reservation_home_salon, container, false);
+
+
         ButterKnife.bind(this, view);
         date = (TextView) view.findViewById(R.id.date);
         time = (TextView) view.findViewById(R.id.time);
@@ -350,10 +354,12 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
         });
 
 
+        /*
         pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.color2));
         pDialog.setTitleText(getResources().getString(R.string.loading));
         pDialog.setCancelable(false);
+        */
         api();
 
 
@@ -538,6 +544,8 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
 
 
         return view;
+
+
     }
 
     private void setGridCellAdapterToDate(int month, int year) {
@@ -552,13 +560,13 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
 
     public void AddReservation() {
         if (selecteddate && setedtime) {
-            pDialog.show();
+           //>> pDialog.show();
             new AddReservation().AddReservation(user2.getId() + "", salon.getSalon().getId() + "", promotion2.getId(), date.getText().toString(), dateseted, timeseted,
                     new UniversalCallBack() {
                         @Override
                         public void onResponse(Object result) {
                             if (result != null) {
-                                pDialog.dismiss();
+                                //>>pDialog.dismiss();
                                 new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
                                         .setTitleText(getResources().getString(R.string.new_res))
                                         .setConfirmText(getResources().getString(R.string.ok))
@@ -575,7 +583,7 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
 
                                 getActivity().getSupportFragmentManager().popBackStack();
                             } else {
-                                pDialog.dismiss();
+                               //>> pDialog.dismiss();
                                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                                         .setTitleText(getResources().getString(R.string.erreurreservation))
                                         .setContentText(getResources().getString(R.string.tryagain))
@@ -595,7 +603,7 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
                         public void onFailure(Object result) {
                             ResponseErrors responseError = (ResponseErrors) result;
                             String Error = "Failure";
-                            pDialog.dismiss();
+                            //>>pDialog.dismiss();
                             new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                                     .setTitleText(getResources().getString(R.string.erreurreservation))
                                     .setContentText(getResources().getString(R.string.tryagain))
@@ -611,7 +619,7 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
 
                         @Override
                         public void OnError(String message) {
-                            pDialog.dismiss();
+                           //>> pDialog.dismiss();
                             new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                                     .setTitleText(getResources().getString(R.string.erreurreservation))
                                     .setContentText(getResources().getString(R.string.tryagain))
@@ -689,7 +697,7 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
 
     public void api() {
 
-        pDialog.show();
+       //>> pDialog.show();
 
 
         new Promotion().getAlluser(new UniversalCallBack() {
@@ -779,7 +787,7 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
                     public void onResponse(Object result) {
                         if (result != null && Reservation_home_salon.this.isVisible()) {
                             salon = (salon.octadevtn.sa.salon.Models.SalonProfile) result;
-                            pDialog.dismiss();
+                            //>>pDialog.dismiss();
                         } else {
                             showError();
 
@@ -810,7 +818,7 @@ public class Reservation_home_salon extends Fragment implements TimePickerDialog
     }
 
     public void showError() {
-        pDialog.dismiss();
+       //>> pDialog.dismiss();
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                 .setTitleText(getResources().getString(R.string.erreur1))
                 .setContentText(getResources().getString(R.string.tryagain))

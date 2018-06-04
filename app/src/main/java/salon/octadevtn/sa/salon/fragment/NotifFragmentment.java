@@ -127,6 +127,7 @@ public class NotifFragmentment extends Fragment {
         ((TextView) v.findViewById(R.id.title)).setTypeface(MyApplication.type_jf_medium);
         ((TextView) v.findViewById(R.id.back)).setTypeface(MyApplication.type_jf_regular);
 
+
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
