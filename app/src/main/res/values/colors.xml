@@ -6,11 +6,12 @@
     <color name="color1">#4b4c4e</color>
     <color name="color2">#41bda5</color>
     <color name="color3">#f16564</color>
+    <color name="color4">#e81f66</color>
+
     <color name="background">#f2f2f2</color>
     <color name="gray">#969696</color>
     <color name="noir">#464646</color>
     <color name="gray_noir">#464646</color>
-    <color name="color4">#e81f66</color>
     <color name="holo_red_dark">#f16564</color>
     <color name="line">#ebebebff</color>
     <color name="yellow">#e81f66</color>
